@@ -24,3 +24,8 @@ button {
   border-color: #e35aa7;
   border-radius: 5px;
 }
+
+.icon {
+  width: 2rem;
+  height: 2rem;
+}
