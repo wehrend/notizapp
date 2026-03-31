@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Notiz App</title>
+    <link rel="stylesheet" href="index.css" />
   </head>
   <body>
     <div class="notes-app">
@@ -12,10 +13,12 @@
         <div class="notes-list"></div>
       </div>
       <div class="main-content">
-        <input type="text" class="title-input" />
-        <button class="save-note"></button>
-        <button class="delete-note"></button>
-        <textarea id="content-input"></textarea>
+        <input type="text" class="title-input" placeholder="="Überschrift eingeben..."/>
+        <div class="button-group">
+          <button class="save-note"></button>
+          <button class="delete-note"></button>
+        </div>
+        <textarea id="content-input" placeholder="Fang' an eine Notiz zu "></textarea>
       </div>
     </div>
   </body>

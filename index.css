@@ -1,0 +1,26 @@
+.notes-app {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  border-right: 1px solid #ccc;
+  padding: 10px;
+}
+
+.main-content {
+  flex-grow: 1; /* This tells the main area to take up all remaining space */
+  padding: 20px;
+  display: flex;
+  flex-direction: column; /* Keeps the title and textarea stacked vertically */
+  gap: 10px;
+}
+
+button {
+  color: white;
+  background-color: #e35aa7;
+  padding: 1rem;
+  border-color: #e35aa7;
+  border-radius: 5px;
+}
