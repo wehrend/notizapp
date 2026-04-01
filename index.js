@@ -27,10 +27,14 @@ const notes = [
   },
 ];
 
+const sortedNotes = notes.sort(
+  (noteA, noteB) => noteB.lastUpdated - noteA.lastUpdated,
+);
+
 function renderNotes() {
   console.log("calling renderNotes();");
 
-  notes.forEach((note) => {
+  sortedNotes.forEach((note) => {
     renderNoteEntry(note);
   });
 }
