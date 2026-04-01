@@ -47,6 +47,9 @@ button {
   width: 5 rem;
 }
 
-.title-input {
+.title-input,
+.content-input {
   width: 90%;
+  font-size: 3rem;
+  font-weight: 700;
 }
