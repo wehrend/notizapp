@@ -50,7 +50,9 @@ function renderNoteEntry(note) {
   noteEntryDiv.appendChild(noteContentDiv);
 
   var noteTimestampDiv = document.createElement("div");
-  noteTimestampDiv.textContent = note.lastUpdated;
+  noteTimestampDiv.textContent = new Date(note.lastUpdated).toLocaleString(
+    "de-DE",
+  );
   noteTimestampDiv.classList.add("note-date");
   noteEntryDiv.appendChild(noteTimestampDiv);
 
