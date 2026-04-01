@@ -25,6 +25,6 @@ const notes = [
   },
 ];
 
-const sortedNotes = notes.sort(
+var sortedNotes = notes.sort(
   (noteA, noteB) => noteB.lastUpdated - noteA.lastUpdated,
 );
