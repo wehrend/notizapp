@@ -47,9 +47,18 @@ button {
   width: 5 rem;
 }
 
-.title-input,
-.content-input {
+#title-input,
+#content-input {
   width: 90%;
   font-size: 3rem;
   font-weight: 700;
+  border: none;
+  outline: none;
+}
+
+#content-input {
+  font-size: 1.5rem;
+  resize: none;
+  border: none;
+  height: 80vh;
 }
