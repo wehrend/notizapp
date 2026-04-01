@@ -1,3 +1,23 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+:root {
+  --font-family: "Poppins", sans-serif;
+  --primary-color: 246, 93, 231;
+  --primary-color-rgb: rgb(var(--primary-color));
+  --primary-color--hover: rgb(249, 126, 237);
+}
+
+button {
+  color: white;
+  background-color: var(--primary-color-rgb);
+  padding: 1rem;
+  border: none;
+  border-radius: 5px;
+}
+
 .notes-app {
   display: flex;
   height: 100vh;
@@ -10,19 +30,11 @@
 }
 
 .main-content {
-  flex-grow: 1; /* This tells the main area to take up all remaining space */
+  flex-grow: 1;
   padding: 20px;
   display: flex;
-  flex-direction: column; /* Keeps the title and textarea stacked vertically */
+  flex-direction: column;
   gap: 10px;
-}
-
-button {
-  color: white;
-  background-color: #e35aa7;
-  padding: 1rem;
-  border-color: #e35aa7;
-  border-radius: 5px;
 }
 
 .icon {
@@ -32,4 +44,9 @@ button {
 
 .group {
   display: flex;
+  width: 5 rem;
+}
+
+.title-input {
+  width: 90%;
 }
