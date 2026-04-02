@@ -1,8 +1,5 @@
 document.addEventListener("DOMContentLoaded", renderNotes);
 
-const titleValue = document.getElementById("title-input").value;
-const contentValue = document.getElementById("content-input").value;
-
 const notes = getNotes();
 
 var sortedNotes = notes.sort(
@@ -59,8 +56,11 @@ function renderNoteEntry(note) {
 function saveNoteButton() {
   console.log("saveNote() triggered");
 
+  const titleValue = document.getElementById("title-input").value;
+  const contentValue = document.getElementById("content-input").value;
+
   // 2. Check for empty strings (not null)
-  if (titleValue.trim() === "" || contentValue.trim() === "") {
+  if (titleValue === "" || contentValue.trim() === "") {
     alert("Bitte Titel und Inhalt eingeben!");
     return; // Stop the function here if empty
   }
@@ -90,6 +90,6 @@ function selectNote(id) {
 
   if (!selectedNote) return;
 
-  titleValue = selectNote.title;
-  contentValue = selectNote.content;
+  document.getElementById("title-input").value = selectedNote.title;
+  document.getElementById("content-input").value = selectedNote.content;
 }
