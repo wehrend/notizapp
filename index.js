@@ -1,5 +1,11 @@
 document.addEventListener("DOMContentLoaded", renderNotes);
 
+const notes = getNotes();
+
+var sortedNotes = notes.sort(
+  (noteA, noteB) => noteB.lastUpdated - noteA.lastUpdated,
+);
+
 function renderNotes() {
   console.log("calling renderNotes();");
 
@@ -35,7 +41,7 @@ function renderNoteEntry(note) {
   }
 }
 
-function saveNote() {
+function saveNoteButton() {
   console.log("saveNote() triggered");
 
   // 1. Get the values directly
@@ -48,22 +54,7 @@ function saveNote() {
     return; // Stop the function here if empty
   }
 
-  // 3. Create the object using the variables directly
-  var currentNote = {
-    id: Math.random(),
-    title: titleValue, // No .nodeValue needed here!
-    content: contentValue, // No .nodeValue needed here!
-    lastUpdated: new Date().getTime(), // getTime() gives a full timestamp
-  };
-
-  console.log("New Note:", currentNote);
-
-  // 4. Use .push() to add to your array (assuming your array is 'notes')
-  notes.push(currentNote);
-
-  // 5. Refresh the UI
-  renderNotes();
-
+  saveNote(titleValue, contentValue);
   // 6. Optional: Clear the inputs after saving
   document.getElementById("title-input").value = "";
   document.getElementById("content-input").value = "";
