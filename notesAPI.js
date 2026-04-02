@@ -10,8 +10,22 @@ function saveNote(title, content) {
   notes.push({
     title,
     content,
-    id: "hallo",
+    id: getNextId(),
     lastUpdated: new Date().getTime(),
   });
   localStorage.setItem(LOCALE_STORAGE_KEY, JSON.stringify(notes));
+}
+
+function getNextId() {
+  const notes = getNotes();
+
+  const sortedNotes = notes.sort((noteA, noteB) => noteA.Id - noteB.Id);
+
+  let nextId = 1;
+
+  for (let note of sortedNotes) {
+    if (nextId < note.Id) break;
+    nextId = note.Id + 1;
+  }
+  return nextId;
 }
