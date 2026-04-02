@@ -5,6 +5,9 @@ const notes = getNotes();
 const createNewButton = document.querySelector(".create-new");
 createNewButton.addEventListener("click", newNote);
 
+const deleteNoteButton = document.querySelector(".delete-note");
+deleteNoteButton.addEventListener("click", deleteButton);
+
 var sortedNotes = notes.sort(
   (noteA, noteB) => noteB.lastUpdated - noteA.lastUpdated,
 );
@@ -64,20 +67,12 @@ function saveNoteButton() {
   const contentValue = document.getElementById("content-input").value;
 
   // 2. Check for empty strings (not null)
-  if (titleValue === "" || contentValue.trim() === "") {
+  if (titleValue === "" || contentValue === "") {
     alert("Bitte Titel und Inhalt eingeben!");
     return; // Stop the function here if empty
   }
 
-  let currrentId = undefined;
-
-  const currentlySelectedNoteEl = document.querySelector(".selected-note");
-
-  if (currentlySelectedNoteEl) {
-    currrentId = currentlySelectedNoteEl.getAttribute("data-id");
-  }
-
-  saveNote(titleValue, contentValue, Number(currrentId));
+  saveNote(titleValue, contentValue, Number(getCurrentlySelectedId()));
 
   // 3. Optional: Clear the inputs after saving
   document.getElementById("title-input").value = "";
@@ -117,4 +112,27 @@ function removeSelectedClassFromAllNotes() {
   noteEntriesEls.forEach((noteEntry) => {
     noteEntry.classList.remove("selected-note");
   });
+}
+
+function deleteButton() {
+  const currentlySelectedId = getCurrentlySelectedId();
+  if (!currentlySelectedId) return;
+
+  deleteNote(currentlySelectedId);
+
+  document.getElementById("title-input").value = "";
+  document.getElementById("content-input").value = "";
+
+  renderNotes();
+  applyListeners();
+}
+
+function getCurrentlySelectedId() {
+  let currrentId = undefined;
+
+  const currentlySelectedNoteEl = document.querySelector(".selected-note");
+
+  if (currentlySelectedNoteEl) {
+    currrentId = currentlySelectedNoteEl.getAttribute("data-id");
+  }
 }
