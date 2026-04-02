@@ -4,15 +4,29 @@ function getNotes() {
   return JSON.parse(localStorage.getItem(LOCALE_STORAGE_KEY)) || [];
 }
 
-function saveNote(title, content) {
+function saveNote(title, content, id = undefined) {
   const notes = getNotes();
+  alert(id);
 
-  notes.push({
-    title,
-    content,
-    id: getNextId(),
-    lastUpdated: new Date().getTime(),
-  });
+  if (!id) {
+    notes.push({
+      title,
+      content,
+      id: getNextId(),
+      lastUpdated: new Date().getTime(),
+    });
+  } else {
+    const indexOfNoteWithId = notes.findIndex((note) => note.id === id);
+
+    if (indexOfNoteWithId > -1) {
+      notes[indexOfNoteWithId] = {
+        title,
+        content,
+        id,
+        lastUpdated: new Date().getTime(),
+      };
+    }
+  }
   localStorage.setItem(LOCALE_STORAGE_KEY, JSON.stringify(notes));
 }
 
