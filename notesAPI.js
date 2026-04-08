@@ -25,7 +25,7 @@ function getNextId() {
 
   for (let note of sortedNotes) {
     if (nextId < note.Id) break;
-    nextId = note.Id + 1;
+    nextId = note.id + 1;
   }
   return nextId;
 }

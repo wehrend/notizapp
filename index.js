@@ -15,6 +15,17 @@ function renderNotes() {
   sortedNotes.forEach((note) => {
     renderNoteEntry(note);
   });
+  applyListeners();
+}
+
+function applyListeners() {
+  const noteEntriesEls = document.querySelectorAll(".note-entry");
+
+  noteEntriesEls.forEach((noteEntry) => {
+    noteEntry.addEventListener("click", () =>
+      selectNote(noteEntry.getAttribute("data-id")),
+    );
+  });
 }
 
 function renderNoteEntry(note) {
@@ -57,4 +68,28 @@ function saveNoteButton() {
   // 3. Optional: Clear the inputs after saving
   titleEl.value = "";
   contentEl.value = "";
+  applyListeners();
+}
+
+function selectNote(id) {
+  console.log("selectNote(" + id + ")");
+  const selectedNoteEl = document.querySelector(`.note-entry[data-id="${id}"]`);
+
+  if (selectedNoteEl.classList.contains("selected-note")) return;
+
+  const noteEntriesEls = document.querySelectorAll(".note-entry");
+  noteEntriesEls.forEach((noteEntry) => {
+    noteEntry.classList.remove("selected-note");
+  });
+
+  selectedNoteEl.classList.add("selected-note");
+
+  const notes = getNotes();
+
+  const selectedNote = notes.find((note) => note.id === Number(id));
+
+  if (!selectedNote) return;
+
+  titleEl.value = selectedNote.title;
+  contentEl.value = selectedNote.content;
 }
