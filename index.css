@@ -47,12 +47,12 @@ button {
 
 .group {
   display: flex;
-  width: 5 rem;
+  gap: 1rem;
 }
 
 #title-input,
 #content-input {
-  width: 80%;
+  width: 100%;
   font-size: 3rem;
   font-weight: 700;
   border: none;
@@ -89,7 +89,7 @@ button {
 
 .selected-note,
 .note-entry:hover {
-  background-color: rgba(-var(--primary-color), 0.3);
+  background-color: rgba(var(--primary-color), 0.3);
 }
 
 .note-title {
