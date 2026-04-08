@@ -4,8 +4,10 @@ const titleEl = document.getElementById("title-input");
 const contentEl = document.getElementById("content-input");
 
 const newNoteButtonEl = document.querySelector(".create-new");
+const deleteNoteButtonEl = document.querySelector(".delete-note");
 
 newNoteButtonEl.addEventListener("click", newNote);
+deleteNoteButtonEl.addEventListener("click", deleteNoteButton);
 
 const notes = getNotes();
 
@@ -68,13 +70,7 @@ function saveNoteButton() {
     return; // Stop the function here if empty
   }
 
-  let currentId = undefined;
-
-  const currentlySelectedNoteEl = document.querySelector(".selected-note");
-  if (currentlySelectedNoteEl) {
-    currentId = currentlySelectedNoteEl.getAttribute("data-id");
-  }
-  saveNote(titleEl.value, contentEl.value, Number(currentId));
+  saveNote(titleEl.value, contentEl.value, Number(getCurrentlySelectedId()));
   // 3. Optional: Clear the inputs after saving
   titleEl.value = "";
   contentEl.value = "";
@@ -106,6 +102,29 @@ function newNote() {
   contentEl.value = "";
 
   removeSelectedClassFromAllNotes();
+}
+
+function deleteNoteButton() {
+  const currentlySelectedId = getCurrentlySelectedId();
+
+  if (!currentlySelectedId) return;
+
+  // todo delete note
+
+  titleEl.value = "";
+  contentEl.value = "";
+
+  renderNotes();
+  applyListeners();
+}
+
+function getCurrentlySelectedId() {
+  let currentId = undefined;
+
+  const currentlySelectedNoteEl = document.querySelector(".selected-note");
+  if (currentlySelectedNoteEl) {
+    currentId = currentlySelectedNoteEl.getAttribute("data-id");
+  }
 }
 
 function removeSelectedClassFromAllNotes() {
