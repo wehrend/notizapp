@@ -64,7 +64,13 @@ function saveNoteButton() {
     return; // Stop the function here if empty
   }
 
-  saveNote(titleEl.value, contentEl.value);
+  let currentId = undefined;
+
+  const currentlySelectedNoteEl = document.querySelector(".selected-note");
+  if (currentlySelectedNoteEl) {
+    currentId = currentlySelectedNoteEl.getAttribute("data-id");
+  }
+  saveNote(titleEl.value, contentEl.value, Number(currentId));
   // 3. Optional: Clear the inputs after saving
   titleEl.value = "";
   contentEl.value = "";
