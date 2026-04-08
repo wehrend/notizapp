@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", renderNotes);
 
-const titleValue = document.getElementById("title-input").value;
-const contentValue = document.getElementById("content-input").value;
+const titleEl = document.getElementById("title-input");
+const contentEl = document.getElementById("content-input");
 
 const notes = getNotes();
 
@@ -48,13 +48,13 @@ function saveNoteButton() {
   console.log("saveNote() triggered");
 
   // 2. Check for empty strings (not null)
-  if (titleValue.trim() === "" || contentValue.trim() === "") {
+  if (titleEl.value.trim() === "" || contentEl.value.trim() === "") {
     alert("Bitte Titel und Inhalt eingeben!");
     return; // Stop the function here if empty
   }
 
-  saveNote(titleValue, contentValue);
+  saveNote(titleEl.value, contentEl.value);
   // 3. Optional: Clear the inputs after saving
-  document.getElementById("title-input").value = "";
-  document.getElementById("content-input").value = "";
+  titleEl.value = "";
+  contentEl.value = "";
 }

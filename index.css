@@ -87,9 +87,9 @@ button {
   transition: all 0.2s ease-in-out;
 }
 
-.note-entry:hover,
-.selected-note {
-  background-color: rgba(-var(--primary-color), 0.1);
+.selected-note,
+.note-entry:hover {
+  background-color: rgba(-var(--primary-color), 0.3);
 }
 
 .note-title {
